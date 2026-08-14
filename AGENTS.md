@@ -6,7 +6,11 @@ ProjectSpin generates software project ideas using five combinable slots:
 
 Build → For → That → With → Constraint.
 
-Read `docs/specs/mvp.md` before modifying product behavior.
+Before modifying product behavior, read:
+
+- `docs/specs/mvp.md`
+- `docs/context/product.md`
+- `docs/context/architecture.md`
 
 ## Architecture
 
@@ -18,6 +22,8 @@ React components must not implement generation rules.
 
 Persistence belongs in `src/storage/`.
 
+Keep domain logic independent from React and browser APIs whenever possible.
+
 ## MVP Constraints
 
 Do not add:
@@ -28,22 +34,12 @@ Do not add:
 - LLM dependencies
 - cloud services
 
-unless a spec explicitly requires them.
+unless an active spec explicitly requires them.
 
 ## Verification
 
-Before completing a change, run:
+Before completing any change, run:
 
-npm test
-npm run lint
-npm run build
-
-Do not report a task complete if any required verification fails.
-
-## Change Discipline
-
-Prefer the smallest change that satisfies the active spec.
-
-Do not perform unrelated refactors.
-
-Update tests whenever observable behavior changes.
+```bash
+npm run check
+```
